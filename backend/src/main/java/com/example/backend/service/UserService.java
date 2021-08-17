@@ -1,5 +1,6 @@
 package com.example.backend.service;
 
+import com.example.backend.dto.User;
 import com.example.backend.mapper.UserMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -18,5 +19,8 @@ public class UserService {
     public void register(MultipartFile avatar, String username, String account, String password) throws IOException, SQLException {
         Blob avatarBlob=new SerialBlob(avatar.getBytes());
         userMapper.register(avatarBlob,username,account,password);
+    }
+    public User login(String account){
+        return userMapper.login(account);
     }
 }
