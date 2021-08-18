@@ -28,4 +28,7 @@ public class UserService {
     public Set<Role> getRoleByAccount(String account){
         return userMapper.getRoleByAccount(account);
     }
+    public int updatePassword(String account,String oldPassword,String newPassword){
+        return userMapper.updatePassword(account,oldPassword,newPassword);
+    }
 }

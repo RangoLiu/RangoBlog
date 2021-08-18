@@ -100,6 +100,25 @@ public class UserController {
         return 1;
     }
 
+    /**
+     * 根据旧密码是否正确修改密码
+     *
+     * @param oldPassword 旧密码
+     * @param newPassword 新密码
+     * @return 修改成功返回1，修改失败返回2，表示旧密码错误
+     */
+    @RequiresRoles({"visitor","admin"})
+    @RequestMapping(value = "/updatePassword",method = RequestMethod.POST)
+    @ResponseBody
+    public int updatePassword(
+            @RequestParam("oldPassword") String oldPassword,
+            @RequestParam("newPassword") String newPassword){
+        String account=SecurityUtils.getSubject().getSession().getAttribute("account").toString();
+        int res = userService.updatePassword(account,getMd5Password(account,oldPassword),getMd5Password(account,newPassword));
+        log.warn(String.valueOf(res));
+        return res;
+    }
+
     @RequiresRoles("admin")
     @RequestMapping(value = "/admin", method = RequestMethod.POST)
     @ResponseBody
