@@ -12,20 +12,41 @@ import java.util.Map;
 
 @Configuration
 public class ShiroConfig {
+
+    /**
+     * Filter工厂，设置拦截条件和跳转条件
+     *
+     * @param manager 管理器
+     */
     @Bean
     public ShiroFilterFactoryBean filterFactoryBean(DefaultWebSecurityManager manager) {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(manager);
+
+        //设置页面对role和permission的审核
         Map<String,String> map=new HashMap<>();
+        map.put("/main","authc");
+        map.put("/admin","roles[admin]");
+        map.put("/update","perms[update]");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(map);
         shiroFilterFactoryBean.setLoginUrl("/login");
+        shiroFilterFactoryBean.setUnauthorizedUrl("/unauthorized");
         return shiroFilterFactoryBean;
     }
+
+    /**
+     * 将自己的realm加入容器
+     */
     @Bean
     public MyRealm myRealm(){
         return new MyRealm();
     }
 
+    /**
+     * 将myRealm注入manager，管理自定义realm
+     *
+     * @param myRealm 自定义realm
+     */
     @Bean
     public DefaultWebSecurityManager manager(MyRealm myRealm){
         DefaultWebSecurityManager manager = new DefaultWebSecurityManager();

@@ -1,5 +1,6 @@
 package com.example.backend.service;
 
+import com.example.backend.dto.Role;
 import com.example.backend.dto.User;
 import com.example.backend.mapper.UserMapper;
 import org.springframework.stereotype.Service;
@@ -10,6 +11,7 @@ import javax.sql.rowset.serial.SerialBlob;
 import java.io.IOException;
 import java.sql.Blob;
 import java.sql.SQLException;
+import java.util.Set;
 
 @Service
 public class UserService {
@@ -22,5 +24,8 @@ public class UserService {
     }
     public User login(String account){
         return userMapper.login(account);
+    }
+    public Set<Role> getRoleByAccount(String account){
+        return userMapper.getRoleByAccount(account);
     }
 }

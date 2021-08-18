@@ -1,29 +1,24 @@
 package com.example.backend.controller;
 
-import com.example.backend.dto.User;
 import com.example.backend.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.AuthorizationException;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.apache.shiro.crypto.hash.SimpleHash;
+import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.util.ByteSource;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import java.io.IOException;
-import java.security.Security;
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
 
 @Controller
 @Slf4j
@@ -97,7 +92,25 @@ public class UserController {
             log.warn("没有权限");
             return 4;
         }
-        log.warn("成功登录");
+        if(subject.isAuthenticated()){
+            log.warn("成功登录");
+        }
+        Session session=subject.getSession();
+        session.setAttribute("account",account);
         return 1;
+    }
+
+    @RequiresRoles("admin")
+    @RequestMapping(value = "/admin", method = RequestMethod.POST)
+    @ResponseBody
+    public void admin(){
+        Session session = SecurityUtils.getSubject().getSession();
+        log.warn(session.getAttribute("account").toString());
+    }
+
+    @RequestMapping(value = "/unauthorized")
+    @ResponseBody
+    public void unauthorized(){
+        log.warn("没有权限");
     }
 }

@@ -1,11 +1,13 @@
 package com.example.backend.mapper;
 
+import com.example.backend.dto.Role;
 import com.example.backend.dto.User;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 import java.sql.Blob;
+import java.util.Set;
 
 @Mapper
 public interface UserMapper {
@@ -14,4 +16,7 @@ public interface UserMapper {
 
     @Select("select * from user where account=#{account}")
     User login(String account);
+
+    @Select("select c.role_id as roleId,c.role_name as roleName from user a,user_role b,role c where a.account = #{account} and b.user_account = #{account} and b.role_id = c.role_id")
+    Set<Role> getRoleByAccount(String account);
 }
