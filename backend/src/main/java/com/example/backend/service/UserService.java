@@ -19,16 +19,24 @@ public class UserService {
     UserMapper userMapper;
 
     public void register(MultipartFile avatar, String username, String account, String password) throws IOException, SQLException {
-        Blob avatarBlob=new SerialBlob(avatar.getBytes());
-        userMapper.register(avatarBlob,username,account,password);
+        Blob avatarBlob = new SerialBlob(avatar.getBytes());
+        userMapper.register(avatarBlob, username, account, password);
     }
-    public User login(String account){
+
+    public User login(String account) {
         return userMapper.login(account);
     }
-    public Set<Role> getRoleByAccount(String account){
+
+    public Set<Role> getRoleByAccount(String account) {
         return userMapper.getRoleByAccount(account);
     }
-    public int updatePassword(String account,String oldPassword,String newPassword){
-        return userMapper.updatePassword(account,oldPassword,newPassword);
+
+    public int updatePassword(String account, String oldPassword, String newPassword) {
+        return userMapper.updatePassword(account, oldPassword, newPassword);
+    }
+
+    public int updateAvatarUsername(String account,String userName, MultipartFile avatar ) throws IOException, SQLException {
+        Blob avatarBlob = new SerialBlob(avatar.getBytes());
+        return userMapper.updateAvatar(account, userName, avatarBlob);
     }
 }
