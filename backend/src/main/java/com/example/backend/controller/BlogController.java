@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Controller
 @Slf4j
@@ -73,6 +74,7 @@ public class BlogController {
      * @param blogId 博客的ID
      * @return 已经点赞则返回true，否则返回false
      */
+    @RequiresRoles("visitor")
     @RequestMapping(value = "checkLike" ,method = RequestMethod.POST)
     @ResponseBody
     public boolean checkLike(
@@ -80,5 +82,21 @@ public class BlogController {
         String account=getCurAccount();
         log.warn(account+"  "+blogId);
         return blogService.checkLike(account,blogId);
+    }
+
+    /**
+     * 更新当前博客的标签
+     *
+     * @param blogId 博客ID
+     * @param labelList 标签列表
+     * @return 增加的标签数量，可正可负
+     */
+    @RequiresRoles("admin")
+    @RequestMapping(value = "/updateLabel",method = RequestMethod.POST)
+    @ResponseBody
+    public int updateLabel(
+            @RequestParam("blogId") int blogId,
+            @RequestParam("labelList") List<Integer> labelList){
+        return blogService.updateLabel(blogId,labelList);
     }
 }

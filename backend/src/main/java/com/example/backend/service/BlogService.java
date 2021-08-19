@@ -4,6 +4,7 @@ import com.example.backend.mapper.BlogMapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class BlogService {
@@ -24,5 +25,14 @@ public class BlogService {
 
     public boolean checkLike(String account,int blogId){
         return blogMapper.checkLike(account,blogId)!=null;
+    }
+
+    public int updateLabel(int blogId, List<Integer> labelList){
+        int deleteLabel=blogMapper.deleteLabel(blogId);
+        int addLabel=0;
+        for(int label:labelList){
+            addLabel+=blogMapper.addLabel(blogId,label);
+        }
+        return addLabel-deleteLabel;
     }
 }

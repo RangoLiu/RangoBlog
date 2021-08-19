@@ -17,4 +17,10 @@ public interface BlogMapper {
 
     @Select("select * from user_like_blog where account=#{account} and blog_id=#{blogId}")
     UserLikeBlog checkLike(String account, int blogId);
+
+    @Delete("delete from blog_label where blog_id=#{blogId}")
+    int deleteLabel(int blogId);
+
+    @Insert("insert into blog_label (blog_id,label_id) values (#{blogId},#{labelId})")
+    int addLabel(int blogId,int labelId);
 }
