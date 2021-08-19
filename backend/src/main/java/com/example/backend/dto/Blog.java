@@ -7,8 +7,7 @@ import java.util.Date;
 
 @Data
 public class Blog {
+    private int blogId;
     private String blogContent;
-    private int like;
-    @DateTimeFormat(pattern = "yyy-MM-dd HH-mm-ss")
-    private Date date;
+    private int blogLike;
 }
