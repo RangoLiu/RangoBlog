@@ -113,6 +113,18 @@ public class UserController {
     }
 
     /**
+     * 退出登录
+     */
+    @RequestMapping(value = "/logout",method = RequestMethod.POST)
+    @ResponseBody
+    public void logout(){
+        //销毁对话
+        Session session=SecurityUtils.getSubject().getSession();
+        session.stop();
+        log.warn("退出登录");
+    }
+
+    /**
      * 根据旧密码是否正确修改密码
      *
      * @param oldPassword 旧密码
