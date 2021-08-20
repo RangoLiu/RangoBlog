@@ -18,7 +18,6 @@ public class CommentService {
 
     public List<List<UserComment>> getComment(int blogId){
         List<UserComment> allComment= commentMapper.getComment(blogId);
-        log.warn(allComment.toString());
         List<List<UserComment>> res=new ArrayList<>();
         if(allComment.isEmpty()){
             return res;
