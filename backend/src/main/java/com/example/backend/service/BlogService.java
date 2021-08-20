@@ -60,6 +60,12 @@ public class BlogService {
         } else {
             res = blogMapper.getBlogInfoAndDataWithFilterLabel((pageNo - 1) * pageLen, pageLen, sortMethodS, ascOrDescS, filterLabelId);
         }
+        for(BlogInfoAndData e:res){
+            Integer commentCount=commentMapper.getCommentCount(e.getBlogId());
+            e.setCommentCount(commentCount==null?0:commentCount);
+            Integer likeCount=userLikeBlogMapper.getLikeCount(e.getBlogId());
+            e.setLikeCount(likeCount==null?0:likeCount);
+        }
         return res;
     }
 
