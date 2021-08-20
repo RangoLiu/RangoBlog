@@ -1,6 +1,7 @@
 package com.example.backend.controller;
 
 import com.example.backend.service.AdminService;
+import com.example.backend.service.UserRoleService;
 import com.example.backend.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authc.AuthenticationException;
@@ -32,6 +33,8 @@ public class UserController {
     @Resource
     AdminService adminService;
 
+    @Resource
+    UserRoleService userRoleService;
     /**
      * 实现密码加密
      *
@@ -64,16 +67,19 @@ public class UserController {
      * @param password 密码
      * @throws SQLException insert可能抛出的异常
      * @throws IOException  字节数组转Blob抛出的异常
+     * @return 返回是否成功
      */
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     @ResponseBody
-    public void register(
+    public boolean register(
             @RequestParam("avatar") MultipartFile avatar,
             @RequestParam("username") String username,
             @RequestParam("account") String account,
             @RequestParam("password") String password) throws SQLException, IOException {
         String md5Password = getMd5Password(account, password);
-        userService.register(avatar, username, account, md5Password);
+        int registerToUser=userService.register(avatar, username, account, md5Password);
+        int registerToUserRole=userRoleService.registerUserRole(account);
+        return registerToUser==1&&registerToUserRole==1;
     }
 
     /**

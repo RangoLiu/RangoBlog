@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6eff8a0d-3858-4bde-a9c6-9562a09d8d91" name="Default Changelist" comment="删除日志输出列表">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/controller/CommentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/mapper/CommentMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/mapper/CommentMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/service/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/service/CommentService.java" afterDir="false" />
-    </list>
+    <list default="true" id="6eff8a0d-3858-4bde-a9c6-9562a09d8d91" name="Default Changelist" comment="更新环境" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,6 +64,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="BackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="backend" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.backend.BackendApplication" />
@@ -96,6 +102,7 @@
       <workItem from="1629190444827" duration="12472000" />
       <workItem from="1629259647135" duration="37040000" />
       <workItem from="1629379576812" duration="890000" />
+      <workItem from="1629476207383" duration="401000" />
     </task>
     <task id="LOCAL-00001" summary="完成登录接口">
       <created>1629205480448</created>
@@ -286,7 +293,21 @@
       <option name="project" value="LOCAL" />
       <updated>1629473978693</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="添加评论和回复功能">
+      <created>1629476530584</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1629476530584</updated>
+    </task>
+    <task id="LOCAL-00029" summary="更新环境">
+      <created>1629476539445</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1629476539445</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -337,10 +358,11 @@
     <MESSAGE value="可通过标签过滤获取博客数量" />
     <MESSAGE value="增加统计博客点赞量和评论量功能" />
     <MESSAGE value="添加获取评论功能" />
-    <MESSAGE value="更新环境" />
     <MESSAGE value="添加获取博客所有标签的功能" />
     <MESSAGE value="修改获取博客全部评论返回值" />
     <MESSAGE value="删除日志输出列表" />
-    <option name="LAST_COMMIT_MESSAGE" value="删除日志输出列表" />
+    <MESSAGE value="添加评论和回复功能" />
+    <MESSAGE value="更新环境" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新环境" />
   </component>
 </project>

@@ -18,9 +18,9 @@ public class UserService {
     @Resource
     UserMapper userMapper;
 
-    public void register(MultipartFile avatar, String username, String account, String password) throws IOException, SQLException {
+    public int register(MultipartFile avatar, String username, String account, String password) throws IOException, SQLException {
         Blob avatarBlob = new SerialBlob(avatar.getBytes());
-        userMapper.register(avatarBlob, username, account, password);
+        return userMapper.register(avatarBlob, username, account, password);
     }
 
     public User login(String account) {
