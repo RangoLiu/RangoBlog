@@ -115,6 +115,7 @@ public class UserController {
     /**
      * 退出登录
      */
+    @RequiresRoles({"visitor", "admin"})
     @RequestMapping(value = "/logout",method = RequestMethod.POST)
     @ResponseBody
     public void logout(){

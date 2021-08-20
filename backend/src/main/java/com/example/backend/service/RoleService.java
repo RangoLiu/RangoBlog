@@ -1,6 +1,6 @@
 package com.example.backend.service;
 
-import com.example.backend.dto.Permission;
+import com.example.backend.dao.Permission;
 import com.example.backend.mapper.RoleMapper;
 import org.springframework.stereotype.Service;
 

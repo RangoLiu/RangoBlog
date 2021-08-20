@@ -1,9 +1,6 @@
-package com.example.backend.dto;
+package com.example.backend.dao;
 
 import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
-
-import java.util.Date;
 
 @Data
 public class Blog {

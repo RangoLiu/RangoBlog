@@ -1,6 +1,6 @@
 package com.example.backend.mapper;
 
-import com.example.backend.vo.UserLikeBlog;
+import com.example.backend.dto.UserLikeBlog;
 import org.apache.ibatis.annotations.*;
 
 

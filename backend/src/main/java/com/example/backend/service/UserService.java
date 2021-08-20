@@ -1,7 +1,7 @@
 package com.example.backend.service;
 
-import com.example.backend.dto.Role;
-import com.example.backend.dto.User;
+import com.example.backend.dao.Role;
+import com.example.backend.dao.User;
 import com.example.backend.mapper.UserMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;

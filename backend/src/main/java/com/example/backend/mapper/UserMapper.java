@@ -1,7 +1,7 @@
 package com.example.backend.mapper;
 
-import com.example.backend.dto.Role;
-import com.example.backend.dto.User;
+import com.example.backend.dao.Role;
+import com.example.backend.dao.User;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;

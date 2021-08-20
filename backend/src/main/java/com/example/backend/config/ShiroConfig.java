@@ -25,7 +25,7 @@ public class ShiroConfig {
 
         //设置页面对role和permission的审核
         Map<String,String> map=new HashMap<>();
-        map.put("/main","authc");
+        map.put("/**","authc");
         map.put("/admin","roles[admin]");
         map.put("/update","perms[update]");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(map);

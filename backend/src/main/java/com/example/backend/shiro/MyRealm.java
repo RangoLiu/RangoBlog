@@ -1,22 +1,18 @@
 package com.example.backend.shiro;
 
-import com.example.backend.dto.Permission;
-import com.example.backend.dto.Role;
-import com.example.backend.dto.User;
-import com.example.backend.mapper.RoleMapper;
+import com.example.backend.dao.Permission;
+import com.example.backend.dao.Role;
+import com.example.backend.dao.User;
 import com.example.backend.service.RoleService;
 import com.example.backend.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
-import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
-import org.apache.shiro.util.ByteSource;
 
 import javax.annotation.Resource;
-import java.util.HashSet;
 import java.util.Set;
 
 @Slf4j
