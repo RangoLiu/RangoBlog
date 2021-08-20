@@ -4,26 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6eff8a0d-3858-4bde-a9c6-9562a09d8d91" name="Default Changelist" comment="添加更新当前文章标签功能">
+    <list default="true" id="6eff8a0d-3858-4bde-a9c6-9562a09d8d91" name="Default Changelist" comment="添加获取标签以及对应博客数量功能">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/config/ShiroConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/config/ShiroConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/dto/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/dao/Admin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/dto/Blog.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/dao/Blog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/dto/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/dao/Comment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/dto/Label.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/dao/Label.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/dto/Permission.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/dao/Permission.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/dto/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/dao/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/dto/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/dao/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/dto/UserRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/dao/UserRole.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/mapper/AdminMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/mapper/AdminMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/controller/BlogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/controller/BlogController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/controller/LabelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/controller/LabelController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/dao/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/dao/Comment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/dto/UserLikeBlog.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/dto/UserLikeBlog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/mapper/BlogMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/mapper/BlogMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/mapper/RoleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/mapper/RoleMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/mapper/UserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/service/RoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/service/RoleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/shiro/MyRealm.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/shiro/MyRealm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/vo/UserLikeBlog.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/dto/UserLikeBlog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/service/BlogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/backend/service/BlogService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,8 +21,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -223,7 +211,28 @@
       <option name="project" value="LOCAL" />
       <updated>1629393223720</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="修改包名">
+      <created>1629433636998</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1629433636998</updated>
+    </task>
+    <task id="LOCAL-00016" summary="修改环境配置">
+      <created>1629433651269</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1629433651269</updated>
+    </task>
+    <task id="LOCAL-00017" summary="添加获取标签以及对应博客数量功能">
+      <created>1629433686506</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1629433686506</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -266,6 +275,9 @@
     <MESSAGE value="更新配置" />
     <MESSAGE value="添加查看是否点赞、点赞、取消点赞功能" />
     <MESSAGE value="添加更新当前文章标签功能" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加更新当前文章标签功能" />
+    <MESSAGE value="修改包名" />
+    <MESSAGE value="修改环境配置" />
+    <MESSAGE value="添加获取标签以及对应博客数量功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加获取标签以及对应博客数量功能" />
   </component>
 </project>

@@ -1,5 +1,6 @@
 package com.example.backend.controller;
 
+import com.example.backend.dto.BlogInfoAndData;
 import com.example.backend.service.BlogService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -98,5 +100,26 @@ public class BlogController {
             @RequestParam("blogId") int blogId,
             @RequestParam("labelList") List<Integer> labelList){
         return blogService.updateLabel(blogId,labelList);
+    }
+
+
+    /**
+     * 获取主页中博客的概述信息
+     *
+     * @param pageNo 页码
+     * @param pageLen 页长度
+     * @param sortMethod 排序方式
+     * @param ascOrDesc 升序或者降序
+     * @return 博客概述信息列表
+     */
+    @RequiresRoles({"visitor", "admin"})
+    @RequestMapping(value = "/getBlogInfoAndData",method = RequestMethod.POST)
+    @ResponseBody
+    List<BlogInfoAndData> getBlogInfoAndData(
+            @RequestParam("pageNo") int pageNo,
+            @RequestParam("pageLen") int pageLen,
+            @RequestParam(value = "sortMethod", defaultValue = "0") int sortMethod,
+            @RequestParam("ascOrDesc") int ascOrDesc) {
+        return blogService.getBlogInfoAndData(pageNo, pageLen, sortMethod,ascOrDesc);
     }
 }

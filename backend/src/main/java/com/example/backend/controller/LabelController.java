@@ -6,6 +6,7 @@ import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
@@ -23,9 +24,10 @@ public class LabelController {
      * @return 返回【标签ID，标签内容，对应博客数量】
      */
     @RequiresRoles({"visitor", "admin"})
-    @RequestMapping(value = "/getLabelCount",method = RequestMethod.GET)
+    @RequestMapping(value = "/getLabelCount", method = RequestMethod.GET)
     @ResponseBody
-    public List<LabelCount> getLabelCount(){
+    public List<LabelCount> getLabelCount() {
         return labelService.getLabelCount();
     }
+
 }
