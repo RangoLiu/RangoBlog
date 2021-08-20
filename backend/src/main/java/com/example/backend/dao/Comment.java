@@ -1,5 +1,6 @@
 package com.example.backend.dao;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.util.Date;
@@ -10,7 +11,7 @@ public class Comment {
 
     //评论组ID
     private int commentGroupId;
-    private String commentText;
+    private String commentContent;
 
     //所在博客的ID
     private int blogId;
@@ -19,5 +20,6 @@ public class Comment {
     //@对象的账号
     private String toAccount;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date commentDate;
 }
