@@ -2,6 +2,7 @@ package com.example.backend.mapper;
 
 import com.example.backend.dao.Comment;
 import com.example.backend.dto.UserComment;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -18,4 +19,10 @@ public interface CommentMapper {
             " where a.account=b.account and blog_id=#{blogId}" +
             " order by comment_group_id,comment_date")
     List<UserComment> getComment(int blogId);
+
+    @Insert("insert into comment " +
+            "(comment_group_id,comment_content,blog_id,account,to_account)" +
+            " values" +
+            " (#{commentGroupId},#{commentContent},#{blogId},#{account},#{toAccount})")
+    int addComment(long commentGroupId,String commentContent,int blogId,String account,String toAccount);
 }

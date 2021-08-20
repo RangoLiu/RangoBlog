@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.SimpleFormatter;
 
 @Service
 @Slf4j
@@ -32,5 +33,11 @@ public class CommentService {
             group.add(allComment.get(i));
         }
         return res;
+    }
+    public int addComment(long commentGroupId,String commentContent,int blogId,String account,String toAccount) {
+        if (commentGroupId == -1) {
+            commentGroupId = System.currentTimeMillis();
+        }
+        return commentMapper.addComment(commentGroupId, commentContent, blogId, account, toAccount);
     }
 }

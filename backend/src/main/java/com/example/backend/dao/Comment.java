@@ -10,7 +10,7 @@ public class Comment {
     private int commentId;
 
     //评论组ID
-    private int commentGroupId;
+    private long commentGroupId;
     private String commentContent;
 
     //所在博客的ID
