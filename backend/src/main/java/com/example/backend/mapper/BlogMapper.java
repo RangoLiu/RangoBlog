@@ -28,16 +28,16 @@ public interface BlogMapper {
     int addLabel(int blogId,int labelId);
 
     @Select("select blog_id as blogId,blog_title as blogTitle,blog_content as blogContent,blog_pageviews as blogPageviews,blog_date as lastChangeDate" +
-            " from blog limit #{offset},#{pageLen}")
-    List<BlogInfoAndData> getBlogInfoAndDataByDefault(int offset, int pageLen);
+            " from blog" +
+            " order by ${sortMethod} ${ascOrDesc}" +
+            " limit #{offset},#{pageLen}")
+    List<BlogInfoAndData> getBlogInfoAndDataWithoutFilterLabel(int offset, int pageLen, String sortMethod, String ascOrDesc);
 
-    @Select("select blog_id as blogId,blog_title as blogTitle,blog_content as blogContent,blog_pageviews as blogPageviews,blog_date as lastChangeDate" +
-            " order by blog_date" +
-            " from blog limit #{offset},#{pageLen}")
-    List<BlogInfoAndData> getBlogInfoAndDataByTime(int offset, int pageLen);
 
-    @Select("select blog_id as blogId,blog_title as blogTitle,blog_content as blogContent,blog_pageviews as blogPageviews,blog_date as lastChangeDate" +
-            " order by blog_views" +
-            " from blog limit #{offset},#{pageLen}")
-    List<BlogInfoAndData> getBlogInfoAndDataByPageviews(int offset, int pageLen);
+    @Select("select a.blog_id as blogId,a.blog_title as blogTitle,a.blog_content as blogContent,a.blog_pageviews as blogPageviews,a.blog_date as lastChangeDate" +
+            " from blog a,blog_label b" +
+            " where a.blog_id = b.blog_id and b.label_id = #{filterLabelId}" +
+            " order by ${sortMethod} ${ascOrDesc}" +
+            " limit #{offset},#{pageLen}")
+    List<BlogInfoAndData> getBlogInfoAndDataWithFilterLabel(int offset, int pageLen, String sortMethod, String ascOrDesc,int filterLabelId);
 }

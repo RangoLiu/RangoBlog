@@ -104,12 +104,13 @@ public class BlogController {
 
 
     /**
-     * 获取主页中博客的概述信息
+     * 获取主页中博客的概述信息，可筛选
      *
      * @param pageNo 页码
      * @param pageLen 页长度
-     * @param sortMethod 排序方式
-     * @param ascOrDesc 升序或者降序
+     * @param sortMethod 排序方式 0：时间排序 1：浏览量排序
+     * @param ascOrDesc 降序升序 0：升序 1：降序
+     * @param filterLabelId 过滤标签ID Id==-1表示不过滤
      * @return 博客概述信息列表
      */
     @RequiresRoles({"visitor", "admin"})
@@ -119,7 +120,8 @@ public class BlogController {
             @RequestParam("pageNo") int pageNo,
             @RequestParam("pageLen") int pageLen,
             @RequestParam(value = "sortMethod", defaultValue = "0") int sortMethod,
-            @RequestParam("ascOrDesc") int ascOrDesc) {
-        return blogService.getBlogInfoAndData(pageNo, pageLen, sortMethod,ascOrDesc);
+            @RequestParam(value = "ascOrDesc", defaultValue = "0") int ascOrDesc,
+            @RequestParam(value = "filterLabelId", defaultValue = "-1" ) int filterLabelId) {
+        return blogService.getBlogInfoAndData(pageNo, pageLen, sortMethod,ascOrDesc,filterLabelId);
     }
 }
