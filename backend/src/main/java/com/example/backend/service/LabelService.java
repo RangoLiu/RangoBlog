@@ -1,5 +1,6 @@
 package com.example.backend.service;
 
+import com.example.backend.dao.Label;
 import com.example.backend.dto.LabelCount;
 import com.example.backend.mapper.LabelMapper;
 import org.springframework.stereotype.Service;
@@ -14,5 +15,9 @@ public class LabelService {
 
     public List<LabelCount> getLabelCount(){
         return labelMapper.getLabelCount();
+    }
+
+    public List<Label> getLabel(int blogId){
+        return labelMapper.getLabel(blogId);
     }
 }

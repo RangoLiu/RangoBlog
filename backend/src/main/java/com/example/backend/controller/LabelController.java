@@ -1,5 +1,6 @@
 package com.example.backend.controller;
 
+import com.example.backend.dao.Label;
 import com.example.backend.dto.LabelCount;
 import com.example.backend.service.LabelService;
 import org.apache.shiro.authz.annotation.RequiresRoles;
@@ -30,4 +31,17 @@ public class LabelController {
         return labelService.getLabelCount();
     }
 
+    /**
+     * 获取博客的所有标签
+     *
+     * @param blogId 博客ID
+     * @return 博客的所有标签
+     */
+    @RequiresRoles({"visitor", "admin"})
+    @RequestMapping(value = "/getLabel", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Label> getLabel(
+            @RequestParam("blogId") int blogId){
+        return labelService.getLabel(blogId);
+    }
 }
