@@ -1,6 +1,6 @@
 package com.example.backend.controller;
 
-import com.example.backend.dao.Comment;
+import com.example.backend.dto.UserComment;
 import com.example.backend.service.CommentService;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.stereotype.Controller;
@@ -21,7 +21,7 @@ public class CommentController {
     @RequiresRoles({"visitor","admin"})
     @RequestMapping(value = "getComment",method = RequestMethod.GET)
     @ResponseBody
-    List<List<Comment>> getComment(
+    List<List<UserComment>> getComment(
             @RequestParam("blogId") int blogId){
         return commentService.getComment(blogId);
     }
