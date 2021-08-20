@@ -40,4 +40,13 @@ public interface BlogMapper {
             " order by ${sortMethod} ${ascOrDesc}" +
             " limit #{offset},#{pageLen}")
     List<BlogInfoAndData> getBlogInfoAndDataWithFilterLabel(int offset, int pageLen, String sortMethod, String ascOrDesc,int filterLabelId);
+
+    @Select("select count(*)" +
+            " from blog a,blog_label b" +
+            " where a.blog_id = b.blog_id and b.label_id = #{filterLabelId}")
+    int getBlogCountWithFilterLabel(int filterLabelId);
+
+    @Select("select count(*)" +
+            " from blog")
+    int getBlogCountWithoutFilterLabel();
 }

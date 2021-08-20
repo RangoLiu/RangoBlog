@@ -62,4 +62,12 @@ public class BlogService {
         }
         return res;
     }
+
+    public int getBlogCount(int filterLabelId) {
+        if (filterLabelId == -1) {
+            return blogMapper.getBlogCountWithoutFilterLabel();
+        } else {
+            return blogMapper.getBlogCountWithFilterLabel(filterLabelId);
+        }
+    }
 }
