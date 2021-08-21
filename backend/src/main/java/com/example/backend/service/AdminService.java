@@ -1,5 +1,6 @@
 package com.example.backend.service;
 
+import com.example.backend.dao.Admin;
 import com.example.backend.mapper.AdminMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -13,5 +14,8 @@ public class AdminService {
 
     public int updateInfo(String account,String edu,String signature,String email,String link){
         return adminMapper.updateInfo(account,edu,signature,email,link);
+    }
+    public Admin getAdminInfo(String account){
+        return adminMapper.getAdminInfo(account);
     }
 }

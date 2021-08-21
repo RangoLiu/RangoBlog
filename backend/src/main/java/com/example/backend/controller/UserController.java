@@ -1,8 +1,10 @@
 package com.example.backend.controller;
 
+import com.example.backend.dao.Admin;
 import com.example.backend.service.AdminService;
 import com.example.backend.service.UserRoleService;
 import com.example.backend.service.UserService;
+import com.sun.corba.se.impl.logging.POASystemException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UnknownAccountException;
@@ -195,6 +197,14 @@ public class UserController {
             @RequestParam("username") String username) throws SQLException, IOException {
         String account=getCurAccount();
         return userService.updateAvatarUsername(account,username,avatar);
+    }
+
+    @RequiresRoles("admin")
+    @RequestMapping(value = "/getAdminInfo",method = RequestMethod.POST)
+    @ResponseBody
+    public Admin getAdminInfo(
+            @RequestParam("account") String account){
+        return adminService.getAdminInfo(account);
     }
 
     @RequiresRoles("admin")
