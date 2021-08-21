@@ -49,4 +49,9 @@ public interface BlogMapper {
     @Select("select count(*)" +
             " from blog")
     int getBlogCountWithoutFilterLabel();
+
+    @Update("update blog" +
+            " set blog_pageviews=blog_pageviews+1" +
+            " where blog_id=#{blogId}")
+    int viewBlog(int blogId);
 }

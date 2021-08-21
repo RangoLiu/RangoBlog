@@ -76,4 +76,8 @@ public class BlogService {
             return blogMapper.getBlogCountWithFilterLabel(filterLabelId);
         }
     }
+
+    public boolean viewBlog(int blogId){
+        return blogMapper.viewBlog(blogId)==1;
+    }
 }

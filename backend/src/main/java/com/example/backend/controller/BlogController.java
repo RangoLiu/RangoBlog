@@ -139,4 +139,25 @@ public class BlogController {
             @RequestParam(value = "filterLabelId", defaultValue = "-1") int filterLabelId) {
         return blogService.getBlogCount(filterLabelId);
     }
+
+    /**
+     * 查看博客 增加浏览量
+     *
+     * @param blogId 博客ID
+     * @return 是否成功查看博客
+     */
+    @RequiresRoles({"visitor","admin"})
+    @RequestMapping(value = "/viewBlog",method = RequestMethod.POST)
+    @ResponseBody
+    public boolean viewBlog(@RequestParam("blogId") int blogId){
+        return blogService.viewBlog(blogId);
+    }
+
+
+    @RequiresRoles("admin")
+    @RequestMapping(value = "/editBlog",method = RequestMethod.POST)
+    @ResponseBody
+    boolean editBlog(@RequestParam("blogId") int blogId){
+        return true;
+    }
 }
