@@ -11,6 +11,8 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 
 import javax.annotation.Resource;
 import java.util.Set;
@@ -22,6 +24,9 @@ public class MyRealm extends AuthorizingRealm {
 
     @Resource
     private RoleService roleService;
+
+    @Resource
+    private RedisTemplate<String,Object> redisTemplate;
 
     /**
      * 授权
@@ -56,12 +61,26 @@ public class MyRealm extends AuthorizingRealm {
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
         UsernamePasswordToken usernamePasswordToken= (UsernamePasswordToken) authenticationToken;
-        //读取数据库的数据
-        User user = userService.login(usernamePasswordToken.getUsername());
-        if(user!=null){
+        String account=usernamePasswordToken.getUsername();
+        ValueOperations<String,Object> valueOperations=redisTemplate.opsForValue();
+        if(valueOperations.get(account)!=null){
+            //读取Redis的数据
+            log.warn("读取Redis的数据");
+            String password= (String) valueOperations.get(account);
+            User user=new User();
+            user.setAccount(account);
+            user.setPassword(password);
             return new SimpleAuthenticationInfo(user,user.getPassword(),getName());
         }
-        log.warn("账号不存在");
+        else{
+            //读取数据库的数据
+            log.warn("读取MySQL的数据");
+            User user = userService.login(usernamePasswordToken.getUsername());
+            if(user!=null){
+                return new SimpleAuthenticationInfo(user,user.getPassword(),getName());
+            }
+            log.warn("账号不存在");
+        }
         return null;
     }
 }

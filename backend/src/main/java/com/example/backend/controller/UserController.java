@@ -16,6 +16,8 @@ import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.util.ByteSource;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -30,6 +32,9 @@ import java.util.Map;
 @Slf4j
 public class UserController {
     @Resource
+    RedisTemplate<String,Object> redisTemplate;
+
+    @Resource
     UserService userService;
 
     @Resource
@@ -37,6 +42,7 @@ public class UserController {
 
     @Resource
     UserRoleService userRoleService;
+
     /**
      * 实现密码加密
      *
@@ -115,6 +121,8 @@ public class UserController {
         if (subject.isAuthenticated()) {
             log.warn("成功登录");
         }
+        ValueOperations<String,Object> valueOperations=redisTemplate.opsForValue();
+        valueOperations.set(account,md5Password);
         Session session = subject.getSession();
         session.setAttribute("account", account);
         return 1;
