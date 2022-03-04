@@ -1,0 +1,488 @@
+{
+	"info": {
+		"_postman_id": "a7a43245-d39b-4913-9573-2da2e11e6070",
+		"name": "RangoBlogTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register 注册",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "avatar",
+							"type": "file",
+							"src": "/D:/EdgeDownloads/plane.png"
+						},
+						{
+							"key": "username",
+							"value": "b",
+							"type": "text"
+						},
+						{
+							"key": "account",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost:8080/register"
+			},
+			"response": []
+		},
+		{
+			"name": "Login 登录",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/login?account=123456&password=123456",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"login"
+					],
+					"query": [
+						{
+							"key": "account",
+							"value": "123456"
+						},
+						{
+							"key": "password",
+							"value": "123456"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdatePassword 修改密码",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/updatePassword?oldPassword=1234&newPassword=12345",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"updatePassword"
+					],
+					"query": [
+						{
+							"key": "oldPassword",
+							"value": "1234"
+						},
+						{
+							"key": "newPassword",
+							"value": "12345"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateAdminInfo 修改管理员信息",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "avatar",
+							"type": "file",
+							"src": "/D:/EdgeDownloads/avatar_1580303786.webp"
+						},
+						{
+							"key": "username",
+							"value": "Rango.Liu",
+							"type": "text"
+						},
+						{
+							"key": "edu",
+							"value": "HFUT",
+							"type": "text"
+						},
+						{
+							"key": "signature",
+							"value": "I am IronMan",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "1584330141@qq.com",
+							"type": "text"
+						},
+						{
+							"key": "link",
+							"value": "www.baidu.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost:8080/updateAdminInfo"
+			},
+			"response": []
+		},
+		{
+			"name": "Logout 登出",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": "http://localhost:8080/logout"
+			},
+			"response": []
+		},
+		{
+			"name": "AddBlog 添加博客",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/blog/addBlog?blogContent=静夜思 床前明月光，疑是地上霜。举头望明月，低头思故乡。",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"blog",
+						"addBlog"
+					],
+					"query": [
+						{
+							"key": "blogContent",
+							"value": "静夜思 床前明月光，疑是地上霜。举头望明月，低头思故乡。"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CheckLike 查看是否点赞",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/blog/checkLike?blogId=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"blog",
+						"checkLike"
+					],
+					"query": [
+						{
+							"key": "blogId",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LikeBlog 点赞博客",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/blog/likeBlog?blogId=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"blog",
+						"likeBlog"
+					],
+					"query": [
+						{
+							"key": "blogId",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UnlikeBlog 取消点赞博客",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/blog/unlikeBlog?blogId=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"blog",
+						"unlikeBlog"
+					],
+					"query": [
+						{
+							"key": "blogId",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetLabelCount 获取标签和对应博客数量",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/label/getLabelCount"
+			},
+			"response": []
+		},
+		{
+			"name": "GetBlogInfoAndData 主页获取博客内容概述",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/blog/getBlogInfoAndData?pageNo=1&pageLen=10&sortMethod=1&ascOrDesc=0&filterLabelId=-1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"blog",
+						"getBlogInfoAndData"
+					],
+					"query": [
+						{
+							"key": "pageNo",
+							"value": "1"
+						},
+						{
+							"key": "pageLen",
+							"value": "10"
+						},
+						{
+							"key": "sortMethod",
+							"value": "1"
+						},
+						{
+							"key": "ascOrDesc",
+							"value": "0"
+						},
+						{
+							"key": "filterLabelId",
+							"value": "-1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetBlogCount 获取博客数量",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/blog/getBlogCount",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"blog",
+						"getBlogCount"
+					],
+					"query": [
+						{
+							"key": "filterLabelId",
+							"value": "1",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetComment 获取博客的所有评论",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/comment/getComment?blogId=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"comment",
+						"getComment"
+					],
+					"query": [
+						{
+							"key": "blogId",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetLabel 获取博客的所有标签",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/label/getLabel?blogId=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"label",
+						"getLabel"
+					],
+					"query": [
+						{
+							"key": "blogId",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddComment 评论或者回复",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/comment/addComment?commentContent=请问我可以转载吗&blogId=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"comment",
+						"addComment"
+					],
+					"query": [
+						{
+							"key": "commentGroupId",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "commentContent",
+							"value": "请问我可以转载吗"
+						},
+						{
+							"key": "blogId",
+							"value": "2"
+						},
+						{
+							"key": "toAccount",
+							"value": "123456",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ViewBlog 查看博客",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/blog/viewBlog?blogId=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"blog",
+						"viewBlog"
+					],
+					"query": [
+						{
+							"key": "blogId",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAdminInfo 获取管理员信息",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/getAdminInfo?account=123456",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getAdminInfo"
+					],
+					"query": [
+						{
+							"key": "account",
+							"value": "123456"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetVisitorInfo 获取游客信息",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		}
+	]
+}
